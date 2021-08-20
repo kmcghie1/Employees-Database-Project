@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CsvFileReader {
-    public static void readFromFile(String fileName) {
+    public static ArrayList<EmployeeDTO> readFromFile(String fileName) {
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -22,9 +22,13 @@ public class CsvFileReader {
 
             bufferedReader.close();
 
+            return employeeList;
+
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             System.err.println("File not found.");
+
+            return null;
         }
     }
 }
